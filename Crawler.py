@@ -43,7 +43,7 @@ class Crawler():
     def initiateDriverSetup(self):
         self.chromeBots["linkedin"]["driver"].get("https://www.linkedin.com/login")
         self.chromeBots["search"]["driver"].get("https://www.google.com")
-            
+        
     def searchLinkedin(self, url):
         self.chromeBots["linkedin"]["driver"].get(url)        
         
@@ -56,7 +56,7 @@ class Crawler():
         pic_url = ""
         
         try:
-            pic_elem = WebDriverWait(self.chromeBots["linkedin"]["driver"], 2).until(
+            pic_elem = WebDriverWait(self.chromeBots["linkedin"]["driver"], 3).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '.pv-top-card__photo>img'))
             )
             if "ghost-person" in pic_elem.get_attribute('class'):
@@ -79,4 +79,3 @@ class Crawler():
                 v["proc"].kill()
             except:
                 pass
-    
