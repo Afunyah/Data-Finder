@@ -19,9 +19,6 @@ crmDataFrame = dhd.pd.read_excel(crmfile, header=0)
 
 
 def DF_APPLY_FUNC(row):
-    # if(row["ID"] == 4):
-    #     exit()
-            
     xForm.resetFinalFormData()
     xForm.resetAIretry()
     xForm.disableGUI()
@@ -85,7 +82,6 @@ def run():
 
 def terminator():
     crawler.terminate()
-
 
 
 try:

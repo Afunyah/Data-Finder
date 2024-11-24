@@ -1,4 +1,5 @@
 import tkinter as tk
+import Prompts
 
 class FormGUI():
     x_width = 50
@@ -34,23 +35,23 @@ class FormGUI():
     f_connected = tk.Entry(master=root, text="", width= x_width)
 
     genderlabel = tk.Label(master=root, text="Gender")
-    gender_options = ["Male","Female"]
-    gender_var = tk.StringVar(value="Male")
+    gender_options = Prompts.getGenderCategory()
+    gender_var = tk.StringVar(value=gender_options[0])
     f_gender = tk.OptionMenu(root, gender_var, *gender_options)
 
     ethnicititylabel = tk.Label(master=root, text="Ethnicity")
-    ethnicity_options = ["African", "Caucasian", "Hispanic", "East Asian", "South Asian", "Middle Eastern"]
-    ethnicity_var = tk.StringVar(value="Caucasian")
+    ethnicity_options = Prompts.getEthnicityCategory()
+    ethnicity_var = tk.StringVar(value=ethnicity_options[0])
     f_ethnicity = tk.OptionMenu(root, ethnicity_var, *ethnicity_options)
 
     agelabel = tk.Label(master=root, text="Age Bracket")
-    age_options = ["0-29","30-39","40-49","50-59","60-100"]
-    age_var = tk.StringVar(value="40-49")
+    age_options = Prompts.getAgeCategory()
+    age_var = tk.StringVar(value=age_options[0])
     f_age = tk.OptionMenu(root, age_var, *age_options)
 
     industrylabel = tk.Label(master=root, text="Industry")
-    industry_options = ["Livery Company","Charity","Church Association","Finance/Business"]
-    industry_var = tk.StringVar(value="Finance/Business")
+    industry_options = Prompts.getIndustryCategory()
+    industry_var = tk.StringVar(value=industry_options[0])
     f_industry = tk.OptionMenu(root, industry_var, *industry_options)
 
     confirm_var = tk.IntVar()
