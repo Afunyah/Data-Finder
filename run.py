@@ -44,7 +44,7 @@ while batch_num not in batches:
 
 start_id = ""
 while not start_id:
-    batch_num = input("\nPlease Enter a start ID within batch range: ")
+    start_id = input("\nPlease Enter a start ID within batch range: ")
 
 print("""
 ---------------------------------------------------------------------------------------------------------------
@@ -55,6 +55,12 @@ print("""
 
 print("Application is running. Please interact with the main window which should have opened by now\n\n")
 
+batch_num = batch_num.replace("-","_")
+batch_dir = f"data/batches/batch_{batch_num}"
+input_file = f"{batch_dir}/original_{batch_num}.xlsx"
+output_file = f"{batch_dir}/output_{batch_num}.xlsx"
+
+main.initialize(input_file, output_file, start_id)
 main.run()
 
 print("Done")
