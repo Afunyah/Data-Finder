@@ -47,10 +47,27 @@ class Crawler():
     def searchLinkedin(self, url):
         self.chromeBots["linkedin"]["driver"].get(url)        
         
-    def searchCompany(self, company):
+    def searchCompany(self, company_p):
+        company = str(company_p)
         company_parsed = company.replace(" ","+")
         search_url = f"https://www.google.com/search?q={company_parsed}"
         self.chromeBots["search"]["driver"].get(search_url)
+        
+    def searchPerson(self, first_p, last_p, company_p, position_p):
+        first = str(first_p)
+        last = str(last_p)
+        company = str(company_p)
+        position = str(position_p)
+        
+        first_parsed = first.replace(" ","+")
+        last_parsed = last.replace(" ","+")
+        company_parsed = company.replace(" ","+")
+        position_parsed = position.replace(" ","+")
+        
+        strng = f"{first_parsed}+{last_parsed}+{position_parsed}+of+{company_parsed}"
+        
+        search_url = f"https://www.google.com/search?q={strng}"
+        self.chromeBots["linkedin"]["driver"].get(search_url)        
         
     def getLinkedinPictureURL(self):
         pic_url = ""

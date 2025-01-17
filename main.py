@@ -40,16 +40,19 @@ def DF_APPLY_FUNC(row):
         
         crm_data = dhd.extractRowData(row)
         
-        crawler.searchLinkedin(crm_data["u_url"])
+        # crawler.searchLinkedin(crm_data["u_url"])
         crawler.searchCompany(crm_data["u_company"])
+        
         pic_url = crawler.getLinkedinPictureURL()
+        pic_url = False
         
         question = ai.createQuestion(crm_data)
         
         if pic_url:
             ai_response = ai.getAIresponse(Prompts.getSystemPrompt_V3(), question, pic_url)
         else:
-            ai_response = ai.getAIresponse(Prompts.getSystemPrompt_V2(), question)
+            # ai_response = ai.getAIresponse(Prompts.getSystemPrompt_V2(), question)
+            ai_response = ai.getAIresponse(Prompts.getSystemPrompt_V4(), question)
         xForm.enableGUI()
         
         while not ai_response:
